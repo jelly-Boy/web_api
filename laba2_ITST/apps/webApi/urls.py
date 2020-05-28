@@ -14,5 +14,10 @@ router.register(r'music_services', MusicServiceViewSet, basename='music_service'
 router.register(r'tracks', TrackViewSet, basename='track')
 
 urlpatterns = [
-    path('admin', admin.site.urls)
+    path('new_api', apiOverview, name="api-overview"),
+    path('new_api/genre-list/', genreList, name="genre-list"),
+    path('new_api/genre-detail/<str:pk>/', genreDetail, name="genre-detail"),
+    path('new_api/genre-create/', genreCreate, name="genre-create"),
+    path('new_api/genre-update/<str:pk>/', genreUpdate, name="genre-update"),
+    path('new_api/genre-delete/<str:pk>/', genreDelete, name="genre-delete"),
 ] + router.urls

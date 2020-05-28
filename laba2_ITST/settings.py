@@ -44,9 +44,11 @@ INSTALLED_APPS = [
     'webApi',
     'rest_framework.authtoken',
     'rest_framework',
+    'corsheaders',
 ]
 SITE_ID = 1
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -61,7 +63,9 @@ ROOT_URLCONF = 'laba2_ITST.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'api_react/build')
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -126,3 +130,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATICFILES_DIR = [
+    os.path.join(BASE_DIR, 'api_react/build/static')
+]
+
+CORS_ORIGIN_WHITELIST = [
+    "http://localhost:3000",
+]
