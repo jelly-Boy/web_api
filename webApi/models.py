@@ -28,6 +28,9 @@ class MusicService(models.Model):
     def __str__(self):
         return self.music_service_name
 
+    def get_test(self):
+        return self.music_service_name + ' - name of music service, ' + self.url + ' - url of music service'
+
 class Track(models.Model):
     track_name = models.CharField(max_length=30)
     genre = models.ForeignKey(Genre, on_delete=models.SET_NULL, related_name='g_tracks', null=True)
